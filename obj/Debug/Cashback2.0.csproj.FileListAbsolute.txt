@@ -1,0 +1,12 @@
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\bin\Debug\Cashback2.0.exe.config
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\bin\Debug\Cashback2.0.exe
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\bin\Debug\Cashback2.0.pdb
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\bin\Debug\Newtonsoft.Json.dll
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\bin\Debug\Newtonsoft.Json.xml
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.csprojAssemblyReference.cache
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2._0.Form1.resources
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2._0.Properties.Resources.resources
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.csproj.GenerateResource.cache
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.csproj.CopyComplete
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.exe
+D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.pdb
