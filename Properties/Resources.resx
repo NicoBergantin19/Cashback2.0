@@ -118,16 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Immagine 2021-03-13 150552" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Immagine 2021-03-13 150552.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="backiee-7703" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backiee-7703.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fgtyjrfyt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fgtyjrfyt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="backiee-94650" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backiee-94650.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Penguins" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Penguins.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cyberpunk-2077-endings-guide-all-endings-and-epilogues-2-Panam-1a" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cyberpunk-2077-endings-guide-all-endings-and-epilogues-2-Panam-1a.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Immagine 2021-03-13 150552" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Immagine 2021-03-13 150552.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2013_call_of_duty_black_ops_2-wide" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2013_call_of_duty_black_ops_2-wide.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bonkù" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bonkù.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fgtyjrfyt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fgtyjrfyt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp Image 2020-06-16 at 6.15.18 PM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhatsApp Image 2020-06-16 at 6.15.18 PM.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

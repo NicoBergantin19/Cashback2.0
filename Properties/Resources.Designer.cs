@@ -63,6 +63,36 @@ namespace Cashback2._0.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2013_call_of_duty_black_ops_2_wide {
+            get {
+                object obj = ResourceManager.GetObject("2013_call_of_duty_black_ops_2-wide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backiee_7703 {
+            get {
+                object obj = ResourceManager.GetObject("backiee-7703", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backiee_94650 {
+            get {
+                object obj = ResourceManager.GetObject("backiee-94650", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bonkù {
             get {
                 object obj = ResourceManager.GetObject("bonkù", resourceCulture);
@@ -96,6 +126,26 @@ namespace Cashback2._0.Properties {
         internal static System.Drawing.Bitmap Immagine_2021_03_13_150552 {
             get {
                 object obj = ResourceManager.GetObject("Immagine 2021-03-13 150552", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Penguins {
+            get {
+                object obj = ResourceManager.GetObject("Penguins", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2020_06_16_at_6_15_18_PM {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2020-06-16 at 6.15.18 PM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

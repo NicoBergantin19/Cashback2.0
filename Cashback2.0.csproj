@@ -96,5 +96,20 @@
   <ItemGroup>
     <None Include="Resources\bonkù.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Penguins.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backiee-7703.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2013_call_of_duty_black_ops_2-wide.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backiee-94650.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2020-06-16 at 6.15.18 PM.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

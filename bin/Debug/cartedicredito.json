@@ -1,0 +1,12 @@
+{
+  "Carte": [
+    {
+      "Nome": "",
+      "Cognome": "",
+      "Numero_Carta": "",
+      "CVC": "",
+      "Mese_Scadenza": "",
+      "Anno_Scadenza": ""
+    }
+  ]
+}
