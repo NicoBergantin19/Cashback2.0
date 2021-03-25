@@ -85,12 +85,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cyberpunk-2077-endings-guide-all-endings-and-epilogues-2-Panam-1a.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\fgtyjrfyt.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Immagine 2021-03-13 150552.png" />
   </ItemGroup>
   <ItemGroup>
@@ -103,13 +97,19 @@
     <None Include="Resources\backiee-7703.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2013_call_of_duty_black_ops_2-wide.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\backiee-94650.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\WhatsApp Image 2020-06-16 at 6.15.18 PM.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Acquisti.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lighthouse.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cashback-di-stato.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

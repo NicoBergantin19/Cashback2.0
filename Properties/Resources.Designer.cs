@@ -63,9 +63,9 @@ namespace Cashback2._0.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _2013_call_of_duty_black_ops_2_wide {
+        internal static System.Drawing.Bitmap Acquisti {
             get {
-                object obj = ResourceManager.GetObject("2013_call_of_duty_black_ops_2-wide", resourceCulture);
+                object obj = ResourceManager.GetObject("Acquisti", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,19 +103,9 @@ namespace Cashback2._0.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cyberpunk_2077_endings_guide_all_endings_and_epilogues_2_Panam_1a {
+        internal static System.Drawing.Bitmap cashback_di_stato {
             get {
-                object obj = ResourceManager.GetObject("Cyberpunk-2077-endings-guide-all-endings-and-epilogues-2-Panam-1a", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap fgtyjrfyt {
-            get {
-                object obj = ResourceManager.GetObject("fgtyjrfyt", resourceCulture);
+                object obj = ResourceManager.GetObject("cashback-di-stato", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +116,16 @@ namespace Cashback2._0.Properties {
         internal static System.Drawing.Bitmap Immagine_2021_03_13_150552 {
             get {
                 object obj = ResourceManager.GetObject("Immagine 2021-03-13 150552", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Lighthouse {
+            get {
+                object obj = ResourceManager.GetObject("Lighthouse", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

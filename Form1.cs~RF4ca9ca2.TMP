@@ -17,11 +17,15 @@ namespace Cashback2._0
         public Form1()
         {
             InitializeComponent();
-            gigio = JsonConvert.DeserializeObject<Deserializzazione>(File.ReadAllText("utenti.json"));          
+            gigio = JsonConvert.DeserializeObject<Deserializzazione>(File.ReadAllText("utenti.json"));
+            amogus = JsonConvert.DeserializeObject<DeserCarte>(File.ReadAllText("cartedicredito.json"));
         }
 
         public Deserializzazione gigio = new Deserializzazione();   //tutto il file
         public Persona astolfo = new Persona();     //singola persona
+
+        public DeserCarte amogus = new DeserCarte();
+        public Carta bigchungus = new Carta();
         internal static string json;
 
         private void Login_Paint(object sender, PaintEventArgs e)
@@ -29,19 +33,15 @@ namespace Cashback2._0
 
         }
 
-        public int indicepazzo;
-
         private void button1_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < gigio.Utenti.Count; i++)
             {
                 if (gigio.Utenti[i].Username == textBox1.Text & gigio.Utenti[i].Password == textBox2.Text)
                 {
-                    Aggiuntacarte();
                     User.BringToFront();
                     Login.Enabled = false;
                     astolfo = gigio.Utenti[i];
-                    indicepazzo = i;                   
                 }
             }
         }
@@ -119,9 +119,9 @@ namespace Cashback2._0
 
         private void button6_Click(object sender, EventArgs e)  //aggiunta carte
         {
-            string carta, nome, cognome, cvc, mese, anno, circuito = "";
-            json = File.ReadAllText("utenti.json");
-            Persona Carte = JsonConvert.DeserializeObject<Persona>(json);
+            string carta, nome, cognome, cvc, mese, anno;
+            json = File.ReadAllText("cartedicredito.json");
+            DeserCarte Carte = JsonConvert.DeserializeObject<DeserCarte>(json);
 
             if (string.IsNullOrWhiteSpace(textBox6.Text) && string.IsNullOrWhiteSpace(textBox7.Text) && string.IsNullOrWhiteSpace(textBox8.Text)
                 && string.IsNullOrWhiteSpace(textBox9.Text) && string.IsNullOrWhiteSpace(textBox10.Text) && string.IsNullOrWhiteSpace(textBox11.Text))
@@ -138,54 +138,20 @@ namespace Cashback2._0
             anno = textBox11.Text;
 
             //////controllo finale///////
-
-            switch (textBox6.Text.Substring(0,4))
+            for (int i = 0; i < amogus.Carte.Count; i++)
             {
-                case "4023":
-                    circuito = "MasterCard";
-                    break;
-
-                case "1234":
-                    circuito = "ViXa";
-                    break;
-
-                case "9876":
-                    circuito = "AmericanExpress";
-                    break;
-                    
-            }
-
-            if (circuito == "")
-            {
-                MessageBox.Show("I dati della carta non sono validi");
-                return;
-            }
-
-            for (int i = 0; i < astolfo.Carte.Count; i++)
-            {
-                if (astolfo.Carte[i].Numero == carta)
+                if (amogus.Carte[i].Numero == carta)
                 {
                     MessageBox.Show("La carta non può essere doppia");
                     return;
                 }
             }
 
-            astolfo.Carte.Add(new Carta { Nome = nome, Cognome = cognome, Circuito = circuito, Numero = carta, CVC = cvc, Anno = anno, Mese = mese});
-            gigio.Utenti[indicepazzo] = astolfo;
-            File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
+            amogus.Carte.Add(new Carta { Nome = nome, Cognome = cognome, Numero = carta, CVC = cvc, Anno = anno, Mese = mese});
+            File.WriteAllText("cartedicredito.json", JsonConvert.SerializeObject(amogus, Formatting.Indented));
 
             MessageBox.Show("La carta è stata aggiunta");
             Login.BringToFront();
-        }
-
-        internal void Aggiuntacarte()
-        {
-            dataGridView1.Rows.Clear();
-            for (int i = 0; i < astolfo.Carte.Count; i++)
-            {
-                dataGridView1.Rows.Add(astolfo.Carte[i].Numero, astolfo.Carte[i].Nome + " " +
-                    astolfo.Carte[i].Cognome, astolfo.Carte[i].Mese + "/" + astolfo.Carte[i].Anno);
-            }
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -217,52 +183,23 @@ namespace Cashback2._0
         {
 
         }
-
-        private void TabellaCarte_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            User.BringToFront();
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-            Login.BringToFront();
-        }
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            User.BringToFront();
-        }
-
-        private void button19_Click(object sender, EventArgs e)
-        {
-            User.BringToFront();
-        }
-
-        private void button20_Click(object sender, EventArgs e)
-        {
-            Login.BringToFront();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
     public class Deserializzazione
     {
         public List<Persona> Utenti { get; set; }
     }
 
+    public class DeserCarte
+    {
+        public List<Carta> Carte { get; set; }
+    }
     public class Persona
-    {       
+    {
         public string Username { get; set; }
         public string Password { get; set; }
-        public List<Carta> Carte { get; set; }
+        public string Carta1 { get; set; }
+        public string Carta2 { get; set; }
+        public string Carta3 { get; set; }
     }
 
     public class Carta
@@ -273,6 +210,5 @@ namespace Cashback2._0
         public string CVC { get; set; }
         public string Mese { get; set; }
         public string Anno { get; set; }
-        public string Circuito { get; set; }
     }
 }
