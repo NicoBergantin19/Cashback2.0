@@ -106,7 +106,7 @@ namespace Cashback2._0
                     return;
                 }
             }
-            gigio.Utenti.Add(new Persona { Username = username, Password = password });
+            gigio.Utenti.Add(new Persona { Username = username, Password = password, Carte = new List<Carta>() });
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
 
             Carte.BringToFront();
