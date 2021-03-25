@@ -29,7 +29,7 @@ namespace Cashback2._0
 
         }
 
-        public int indicepazzo;
+        public int indicepazzo, prezzo;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -223,7 +223,7 @@ namespace Cashback2._0
 
         private void button10_Click(object sender, EventArgs e)
         {
-
+            prezzo = 80;
         }
 
         private void TabellaCarte_Paint(object sender, PaintEventArgs e)
@@ -257,6 +257,31 @@ namespace Cashback2._0
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            Tracciato.BringToFront();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Spese_Paint(object sender, PaintEventArgs e)
         {
 
         }
