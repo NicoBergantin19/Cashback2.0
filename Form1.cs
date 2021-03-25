@@ -78,9 +78,7 @@ namespace Cashback2._0
 
         private void button3_Click(object sender, EventArgs e)  //registrazione
         {
-            string username, password;
-            json = File.ReadAllText("utenti.json");
-            Deserializzazione Utenti = JsonConvert.DeserializeObject<Deserializzazione>(json);
+            string username, password;            
             
             if (string.IsNullOrWhiteSpace(textBox3.Text) && string.IsNullOrWhiteSpace(textBox4.Text))
             {
@@ -106,7 +104,11 @@ namespace Cashback2._0
                     return;
                 }
             }
-            gigio.Utenti.Add(new Persona { Username = username, Password = password, Carte = new List<Carta>() });
+
+            astolfo.Username = username;
+            astolfo.Password = password;
+            astolfo.Carte = new List<Carta>();
+            gigio.Utenti.Add(astolfo);
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
 
             Carte.BringToFront();
@@ -171,7 +173,13 @@ namespace Cashback2._0
             }
 
             astolfo.Carte.Add(new Carta { Nome = nome, Cognome = cognome, Circuito = circuito, Numero = carta, CVC = cvc, Anno = anno, Mese = mese});
-            gigio.Utenti[indicepazzo] = astolfo;
+            for (int i = 0; i < gigio.Utenti.Count; i++)
+            {
+                if (gigio.Utenti[i].Username == astolfo.Username)
+                {
+                    gigio.Utenti[i] = astolfo;
+                }
+            }
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
 
             MessageBox.Show("La carta è stata aggiunta");
