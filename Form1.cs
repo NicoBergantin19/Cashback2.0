@@ -17,7 +17,8 @@ namespace Cashback2._0
         public Form1()
         {
             InitializeComponent();
-            gigio = JsonConvert.DeserializeObject<Deserializzazione>(File.ReadAllText("utenti.json"));          
+            gigio = JsonConvert.DeserializeObject<Deserializzazione>(File.ReadAllText("utenti.json"));
+            Login.BringToFront();
         }
 
         public Deserializzazione gigio = new Deserializzazione();   //tutto il file
@@ -29,19 +30,21 @@ namespace Cashback2._0
 
         }
 
-        public int indicepazzo, prezzo;
+        public int indicepazzo;
 
         private void button1_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < gigio.Utenti.Count; i++)
             {
                 if (gigio.Utenti[i].Username == textBox1.Text & gigio.Utenti[i].Password == textBox2.Text)
-                {
-                    Aggiuntacarte();
+                {   
+                    
                     User.BringToFront();
                     Login.Enabled = false;
                     astolfo = gigio.Utenti[i];
-                    indicepazzo = i;                   
+                    indicepazzo = i;
+                    Aggiuntacarte();
+                    return;
                 }
             }
         }
@@ -100,7 +103,7 @@ namespace Cashback2._0
             {
                 if (gigio.Utenti[i].Username == username)
                 {
-                    MessageBox.Show("Username non disponibile");
+                    MessageBox.Show("Username non disponibile", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -108,10 +111,11 @@ namespace Cashback2._0
             astolfo.Username = username;
             astolfo.Password = password;
             astolfo.Carte = new List<Carta>();
+            astolfo.Transazione = new List<Transazioni>();
             gigio.Utenti.Add(astolfo);
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
 
-            Carte.BringToFront();
+            Login.BringToFront();
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -183,7 +187,8 @@ namespace Cashback2._0
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
 
             MessageBox.Show("La carta è stata aggiunta");
-            Login.BringToFront();
+            User.BringToFront();
+            Aggiuntacarte();
         }
 
         internal void Aggiuntacarte()
@@ -194,6 +199,26 @@ namespace Cashback2._0
                 dataGridView1.Rows.Add(astolfo.Carte[i].Numero, astolfo.Carte[i].Nome + " " +
                     astolfo.Carte[i].Cognome, astolfo.Carte[i].Mese + "/" + astolfo.Carte[i].Anno);
             }
+        }
+
+        internal void Pagamenti(string esercente, int prezzo)
+        {
+
+            Transazioni popi = new Transazioni();
+            for (int i = 0; i < astolfo.Carte.Count; i++)
+            {
+                if (astolfo.Carte[i].Numero == comboBox1.Text)
+                {
+                    popi.CircuitoTr = astolfo.Carte[i].Circuito;
+                    popi.NumCarta = astolfo.Carte[i].Numero;
+                    popi.Esercente = esercente;
+                    popi.PrezzoTot = prezzo;
+                    popi.Giorno = DateTime.Today.ToString();
+                    break;
+                }
+            }
+            astolfo.Transazione.Add(popi);
+            MessageBox.Show("Pagamento andato a buon fine");
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -219,11 +244,16 @@ namespace Cashback2._0
         private void button7_Click(object sender, EventArgs e)
         {
             Spese.BringToFront();
+            comboBox1.Items.Clear();
+            for (int i = 0; i < astolfo.Carte.Count; i++)
+            {
+                comboBox1.Items.Add(astolfo.Carte[i].Numero);
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            prezzo = 80;
+            
         }
 
         private void TabellaCarte_Paint(object sender, PaintEventArgs e)
@@ -263,27 +293,69 @@ namespace Cashback2._0
 
         private void button11_Click(object sender, EventArgs e)
         {
-
+            //assicurazione = 45 euro
+            Pagamenti(((Button)sender).Text, 50);
         }
 
         private void button22_Click(object sender, EventArgs e)
         {
+            //prezzo = insieme dei bottoni premuti
             Tracciato.BringToFront();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-
+            //spesa = 35 euro
+            Pagamenti(((Button)sender).Text, 35);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
+            //benzina = 20 euro
+            Pagamenti(((Button)sender).Text, 20);
+        }
 
+        private void button15_Click(object sender, EventArgs e)
+        {
+            //medicine = 150 euro
+            Pagamenti(((Button)sender).Text, 150);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //affitto = 200
+            //bollette mensili = 350
+            Pagamenti(((Button)sender).Text, 600);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //Revisione auto/moto = 55
+            Pagamenti(((Button)sender).Text, 60);
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            Carte.BringToFront();                        
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            //uscita = 50 euro
+            Pagamenti(((Button)sender).Text, 50);
         }
 
         private void Spese_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
+            }
         }
     }
     public class Deserializzazione
@@ -291,11 +363,21 @@ namespace Cashback2._0
         public List<Persona> Utenti { get; set; }
     }
 
+    public class Transazioni
+    {
+        public string CircuitoTr { get; set; }
+        public string NumCarta { get; set; }
+        public string Giorno { get; set; }
+        public int PrezzoTot { get; set; }
+        public string Esercente { get; set; }
+    }
+
     public class Persona
     {       
         public string Username { get; set; }
         public string Password { get; set; }
         public List<Carta> Carte { get; set; }
+        public List<Transazioni> Transazione { get; set; }
     }
 
     public class Carta

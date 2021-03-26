@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Tracciato = new System.Windows.Forms.Panel();
             this.button18 = new System.Windows.Forms.Button();
             this.Registrazione = new System.Windows.Forms.Panel();
@@ -42,6 +42,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Spese = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.button22 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -60,6 +62,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.VistaCarte = new System.Windows.Forms.Panel();
+            this.button23 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Carta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,8 +95,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.Tracciato.SuspendLayout();
             this.Registrazione.SuspendLayout();
             this.Spese.SuspendLayout();
@@ -246,6 +249,8 @@
             // 
             this.Spese.BackgroundImage = global::Cashback2._0.Properties.Resources.Acquisti;
             this.Spese.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Spese.Controls.Add(this.label19);
+            this.Spese.Controls.Add(this.comboBox1);
             this.Spese.Controls.Add(this.label18);
             this.Spese.Controls.Add(this.button22);
             this.Spese.Controls.Add(this.button16);
@@ -265,6 +270,28 @@
             this.Spese.Size = new System.Drawing.Size(968, 624);
             this.Spese.TabIndex = 4;
             this.Spese.Paint += new System.Windows.Forms.PaintEventHandler(this.Spese_Paint);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(328, 33);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(161, 25);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Acquisti da fare";
+            // 
+            // button22
+            // 
+            this.button22.BackColor = System.Drawing.Color.White;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button22.Location = new System.Drawing.Point(333, 443);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(156, 49);
+            this.button22.TabIndex = 11;
+            this.button22.Text = " Vai al cashback";
+            this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // button16
             // 
@@ -290,6 +317,7 @@
             this.button15.TabIndex = 9;
             this.button15.Text = "SPESE MEDICHE";
             this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // button14
             // 
@@ -302,6 +330,7 @@
             this.button14.TabIndex = 8;
             this.button14.Text = "MANUTENZIONE VEICOLO";
             this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // button13
             // 
@@ -314,6 +343,7 @@
             this.button13.TabIndex = 7;
             this.button13.Text = "MANUTENZIONE CASA";
             this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // label22
             // 
@@ -338,6 +368,7 @@
             this.button12.TabIndex = 5;
             this.button12.Text = "USCITA";
             this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // label21
             // 
@@ -484,6 +515,7 @@
             this.VistaCarte.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.VistaCarte.BackgroundImage = global::Cashback2._0.Properties.Resources.Lighthouse;
             this.VistaCarte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.VistaCarte.Controls.Add(this.button23);
             this.VistaCarte.Controls.Add(this.dataGridView1);
             this.VistaCarte.Controls.Add(this.button19);
             this.VistaCarte.Controls.Add(this.label23);
@@ -492,19 +524,31 @@
             this.VistaCarte.Size = new System.Drawing.Size(968, 624);
             this.VistaCarte.TabIndex = 0;
             // 
+            // button23
+            // 
+            this.button23.BackColor = System.Drawing.Color.White;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button23.Location = new System.Drawing.Point(643, 209);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(95, 35);
+            this.button23.TabIndex = 4;
+            this.button23.Text = "AGGIUNGI";
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Carta,
@@ -607,11 +651,11 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(234, 47);
+            this.label17.Location = new System.Drawing.Point(267, 44);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(422, 37);
+            this.label17.Size = new System.Drawing.Size(303, 37);
             this.label17.TabIndex = 13;
-            this.label17.Text = "REGISTRAZIONE ACOUNT";
+            this.label17.Text = "AGGIUNTA CARTE\r\n";
             // 
             // button6
             // 
@@ -854,28 +898,27 @@
             this.button1.Text = "LOGIN";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button1_KeyDown);
             // 
-            // button22
+            // comboBox1
             // 
-            this.button22.BackColor = System.Drawing.Color.White;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button22.Location = new System.Drawing.Point(333, 443);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(156, 49);
-            this.button22.TabIndex = 11;
-            this.button22.Text = " Vai al cashback";
-            this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(790, 145);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 13;
             // 
-            // label18
+            // label19
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(328, 33);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(161, 25);
-            this.label18.TabIndex = 12;
-            this.label18.Text = "Acquisti da fare";
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.White;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(785, 104);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(48, 20);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Carta";
             // 
             // Form1
             // 
@@ -883,12 +926,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 624);
             this.Controls.Add(this.Spese);
+            this.Controls.Add(this.User);
             this.Controls.Add(this.Login);
+            this.Controls.Add(this.Registrazione);
             this.Controls.Add(this.Carte);
             this.Controls.Add(this.VistaCarte);
             this.Controls.Add(this.Tracciato);
-            this.Controls.Add(this.User);
-            this.Controls.Add(this.Registrazione);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -981,6 +1024,9 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
