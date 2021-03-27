@@ -404,6 +404,16 @@ namespace Cashback2._0
         {
 
         }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.Text == "")
+            {
+                MessageBox.Show("Non hai inserito i giorni da saltare", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            astolfo.Tempo += Convert.ToInt32(comboBox2.Text);
+        }
     }
     public class Deserializzazione  //deserializzazione della persona
     {
@@ -425,7 +435,7 @@ namespace Cashback2._0
         public string Password { get; set; }
         public List<Carta> Carte { get; set; }
         public List<Transazioni> Transazione { get; set; }
-        public string Tempo { get; set; }
+        public int Tempo { get; set; }
     }
 
     public class Carta  //Dati carta
