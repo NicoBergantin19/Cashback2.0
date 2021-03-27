@@ -28,8 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Tracciato = new System.Windows.Forms.Panel();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.CartaUsata = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Spesa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Esercente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button18 = new System.Windows.Forms.Button();
             this.Registrazione = new System.Windows.Forms.Panel();
             this.button21 = new System.Windows.Forms.Button();
@@ -42,6 +47,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Spese = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.button22 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
@@ -56,6 +64,8 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.User = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button20 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
@@ -70,6 +80,7 @@
             this.button19 = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.Carte = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
             this.button17 = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
@@ -95,9 +106,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.Tracciato.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.Registrazione.SuspendLayout();
             this.Spese.SuspendLayout();
             this.User.SuspendLayout();
@@ -112,11 +130,57 @@
             this.Tracciato.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Tracciato.BackgroundImage = global::Cashback2._0.Properties.Resources.cashback_di_stato;
             this.Tracciato.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Tracciato.Controls.Add(this.dataGridView2);
             this.Tracciato.Controls.Add(this.button18);
             this.Tracciato.Location = new System.Drawing.Point(0, 0);
             this.Tracciato.Name = "Tracciato";
             this.Tracciato.Size = new System.Drawing.Size(968, 624);
             this.Tracciato.TabIndex = 0;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CartaUsata,
+            this.Spesa,
+            this.Esercente,
+            this.Data});
+            this.dataGridView2.Location = new System.Drawing.Point(0, 104);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(968, 150);
+            this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // CartaUsata
+            // 
+            this.CartaUsata.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CartaUsata.HeaderText = "Carta";
+            this.CartaUsata.Name = "CartaUsata";
+            this.CartaUsata.ReadOnly = true;
+            // 
+            // Spesa
+            // 
+            this.Spesa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Spesa.HeaderText = "Spesa";
+            this.Spesa.Name = "Spesa";
+            this.Spesa.ReadOnly = true;
+            // 
+            // Esercente
+            // 
+            this.Esercente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Esercente.HeaderText = "Esercente";
+            this.Esercente.Name = "Esercente";
+            this.Esercente.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
             // 
             // button18
             // 
@@ -249,6 +313,15 @@
             // 
             this.Spese.BackgroundImage = global::Cashback2._0.Properties.Resources.Acquisti;
             this.Spese.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Spese.Controls.Add(this.label33);
+            this.Spese.Controls.Add(this.label32);
+            this.Spese.Controls.Add(this.label31);
+            this.Spese.Controls.Add(this.label30);
+            this.Spese.Controls.Add(this.label29);
+            this.Spese.Controls.Add(this.label28);
+            this.Spese.Controls.Add(this.label27);
+            this.Spese.Controls.Add(this.label26);
+            this.Spese.Controls.Add(this.label25);
             this.Spese.Controls.Add(this.label19);
             this.Spese.Controls.Add(this.comboBox1);
             this.Spese.Controls.Add(this.label18);
@@ -270,6 +343,41 @@
             this.Spese.Size = new System.Drawing.Size(968, 624);
             this.Spese.TabIndex = 4;
             this.Spese.Paint += new System.Windows.Forms.PaintEventHandler(this.Spese_Paint);
+            // 
+            // label25
+            // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.White;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(786, 206);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(54, 20);
+            this.label25.TabIndex = 15;
+            this.label25.Text = "Saldo:";
+            this.label25.Click += new System.EventHandler(this.label25_Click);
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.White;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(785, 104);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(48, 20);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Carta";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.White;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(790, 145);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 13;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label18
             // 
@@ -324,7 +432,7 @@
             this.button14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button14.BackColor = System.Drawing.Color.White;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button14.Location = new System.Drawing.Point(558, 350);
+            this.button14.Location = new System.Drawing.Point(485, 348);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(150, 50);
             this.button14.TabIndex = 8;
@@ -337,7 +445,7 @@
             this.button13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button13.BackColor = System.Drawing.Color.White;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button13.Location = new System.Drawing.Point(558, 283);
+            this.button13.Location = new System.Drawing.Point(485, 281);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(150, 50);
             this.button13.TabIndex = 7;
@@ -351,7 +459,7 @@
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.White;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(554, 101);
+            this.label22.Location = new System.Drawing.Point(481, 99);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(89, 20);
             this.label22.TabIndex = 6;
@@ -387,7 +495,7 @@
             this.button11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button11.BackColor = System.Drawing.Color.White;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button11.Location = new System.Drawing.Point(558, 146);
+            this.button11.Location = new System.Drawing.Point(485, 144);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(150, 50);
             this.button11.TabIndex = 3;
@@ -400,7 +508,7 @@
             this.button10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button10.BackColor = System.Drawing.Color.White;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button10.Location = new System.Drawing.Point(558, 217);
+            this.button10.Location = new System.Drawing.Point(485, 215);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(150, 50);
             this.button10.TabIndex = 2;
@@ -438,6 +546,8 @@
             // 
             this.User.BackColor = System.Drawing.Color.Transparent;
             this.User.BackgroundImage = global::Cashback2._0.Properties.Resources.Penguins;
+            this.User.Controls.Add(this.label24);
+            this.User.Controls.Add(this.comboBox2);
             this.User.Controls.Add(this.button20);
             this.User.Controls.Add(this.button7);
             this.User.Controls.Add(this.label16);
@@ -448,6 +558,24 @@
             this.User.Name = "User";
             this.User.Size = new System.Drawing.Size(968, 624);
             this.User.TabIndex = 0;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(12, 122);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(83, 13);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "Giorni da saltare";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(12, 138);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 5;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // button20
             // 
@@ -509,6 +637,7 @@
             this.button4.TabIndex = 0;
             this.button4.Text = "TRACCIATO";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // VistaCarte
             // 
@@ -541,14 +670,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Carta,
@@ -612,6 +741,7 @@
             this.Carte.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Carte.BackgroundImage = global::Cashback2._0.Properties.Resources.backiee_7703;
             this.Carte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Carte.Controls.Add(this.label20);
             this.Carte.Controls.Add(this.button17);
             this.Carte.Controls.Add(this.label17);
             this.Carte.Controls.Add(this.button6);
@@ -632,6 +762,18 @@
             this.Carte.Size = new System.Drawing.Size(968, 624);
             this.Carte.TabIndex = 8;
             this.Carte.Paint += new System.Windows.Forms.PaintEventHandler(this.Carte_Paint);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.Red;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(701, 162);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(151, 64);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "Carte accettate:\r\nMasterCard: 4023\r\nViXa: 1234\r\nAmerican Express: 9876\r\n";
             // 
             // button17
             // 
@@ -900,38 +1042,114 @@
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button1_KeyDown);
             // 
-            // comboBox1
+            // label26
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(790, 145);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 13;
+            this.label26.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.White;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(270, 162);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(53, 20);
+            this.label26.TabIndex = 16;
+            this.label26.Text = "= € 40";
             // 
-            // label19
+            // label27
             // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.White;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(785, 104);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(48, 20);
-            this.label19.TabIndex = 14;
-            this.label19.Text = "Carta";
+            this.label27.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.White;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(274, 231);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(49, 20);
+            this.label27.TabIndex = 17;
+            this.label27.Text = "= €20";
+            // 
+            // label28
+            // 
+            this.label28.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.White;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(274, 292);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(49, 20);
+            this.label28.TabIndex = 18;
+            this.label28.Text = "= €50";
+            // 
+            // label29
+            // 
+            this.label29.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.White;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(274, 364);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(58, 20);
+            this.label29.TabIndex = 19;
+            this.label29.Text = "= €150";
+            // 
+            // label30
+            // 
+            this.label30.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.White;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(659, 162);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(49, 20);
+            this.label30.TabIndex = 20;
+            this.label30.Text = "= €50";
+            // 
+            // label31
+            // 
+            this.label31.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.White;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(659, 232);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(49, 20);
+            this.label31.TabIndex = 21;
+            this.label31.Text = "= €50";
+            // 
+            // label32
+            // 
+            this.label32.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.White;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(659, 295);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(58, 20);
+            this.label32.TabIndex = 22;
+            this.label32.Text = "= €600";
+            // 
+            // label33
+            // 
+            this.label33.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.White;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(659, 364);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(49, 20);
+            this.label33.TabIndex = 23;
+            this.label33.Text = "= €60";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 624);
-            this.Controls.Add(this.Spese);
             this.Controls.Add(this.User);
+            this.Controls.Add(this.Spese);
             this.Controls.Add(this.Login);
-            this.Controls.Add(this.Registrazione);
             this.Controls.Add(this.Carte);
-            this.Controls.Add(this.VistaCarte);
+            this.Controls.Add(this.Registrazione);
             this.Controls.Add(this.Tracciato);
+            this.Controls.Add(this.VistaCarte);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -939,6 +1157,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Tracciato.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.Registrazione.ResumeLayout(false);
             this.Registrazione.PerformLayout();
             this.Spese.ResumeLayout(false);
@@ -1027,6 +1246,23 @@
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CartaUsata;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Spesa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Esercente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
     }
 }
 

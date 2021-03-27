@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Forms; 
 using Newtonsoft.Json;
 using System.IO;
 
@@ -14,33 +14,36 @@ namespace Cashback2._0
 {
     public partial class Form1 : Form
     {
+        /*I giorni iniziano a passare dal primo login, cioè quando viene creato l'account,
+         poi si può decidere quanti giorni skippare e ovviamente gli utenti sono indipendenti 
+         l'uno dall'altro. La possibilità avviene all'interno del pannello dello user così dopo 
+         se si vuole rimanere sullo stesso account ma con i giorni passati e poi al massimo se 
+         vuole cambiare utente torna indietro*/
         public Form1()
         {
             InitializeComponent();
-            gigio = JsonConvert.DeserializeObject<Deserializzazione>(File.ReadAllText("utenti.json"));
+            gigio = JsonConvert.DeserializeObject<Deserializzazione>(File.ReadAllText("utenti.json"));  //deserializzazione del file degli utenti
             Login.BringToFront();
+            comboBox2.Items.AddRange(array);
         }
 
         public Deserializzazione gigio = new Deserializzazione();   //tutto il file
         public Persona astolfo = new Persona();     //singola persona
         internal static string json;
-
+        internal string[] array = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19",
+        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
         private void Login_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         public int indicepazzo;
-
         private void button1_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < gigio.Utenti.Count; i++)
+            for (int i = 0; i < gigio.Utenti.Count; i++)    //Ricerca dell'utente di cui fare il login
             {
                 if (gigio.Utenti[i].Username == textBox1.Text & gigio.Utenti[i].Password == textBox2.Text)
-                {   
-                    
+                {                       
                     User.BringToFront();
-                    Login.Enabled = false;
                     astolfo = gigio.Utenti[i];
                     indicepazzo = i;
                     Aggiuntacarte();
@@ -48,42 +51,35 @@ namespace Cashback2._0
                 }
             }
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             
         }
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void label8_Click(object sender, EventArgs e)
         {
 
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Registrazione.BringToFront();
         }
-
         private void button3_Click(object sender, EventArgs e)  //registrazione
         {
             string username, password;            
             
-            if (string.IsNullOrWhiteSpace(textBox3.Text) && string.IsNullOrWhiteSpace(textBox4.Text))
+            if (string.IsNullOrWhiteSpace(textBox3.Text) && string.IsNullOrWhiteSpace(textBox4.Text))   //Controllo dei textbox
             {
                 MessageBox.Show("I campi non possono essere vuoti");
                 return;
@@ -99,7 +95,7 @@ namespace Cashback2._0
             }
 
             /////fine//////
-            for (int i = 0; i < gigio.Utenti.Count; i++)
+            for (int i = 0; i < gigio.Utenti.Count; i++)    //controllo username
             {
                 if (gigio.Utenti[i].Username == username)
                 {
@@ -108,13 +104,13 @@ namespace Cashback2._0
                 }
             }
 
+            //serializzazione
             astolfo.Username = username;
             astolfo.Password = password;
             astolfo.Carte = new List<Carta>();
             astolfo.Transazione = new List<Transazioni>();
-            gigio.Utenti.Add(astolfo);
-            File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
-
+            gigio.Utenti.Add(astolfo);           
+            Salva();
             Login.BringToFront();
         }
 
@@ -126,13 +122,11 @@ namespace Cashback2._0
         private void button6_Click(object sender, EventArgs e)  //aggiunta carte
         {
             string carta, nome, cognome, cvc, mese, anno, circuito = "";
-            json = File.ReadAllText("utenti.json");
-            Persona Carte = JsonConvert.DeserializeObject<Persona>(json);
 
             if (string.IsNullOrWhiteSpace(textBox6.Text) && string.IsNullOrWhiteSpace(textBox7.Text) && string.IsNullOrWhiteSpace(textBox8.Text)
                 && string.IsNullOrWhiteSpace(textBox9.Text) && string.IsNullOrWhiteSpace(textBox10.Text) && string.IsNullOrWhiteSpace(textBox11.Text))
             {
-                MessageBox.Show("I campi non possono essere vuoti");
+                MessageBox.Show("I campi non possono essere vuoti", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -143,8 +137,7 @@ namespace Cashback2._0
             mese = textBox10.Text;
             anno = textBox11.Text;
 
-            //////controllo finale///////
-
+            //Controllo e assegnazione circuito in base ai primi 4 numeri
             switch (textBox6.Text.Substring(0,4))
             {
                 case "4023":
@@ -157,26 +150,27 @@ namespace Cashback2._0
 
                 case "9876":
                     circuito = "AmericanExpress";
-                    break;
-                    
+                    break;                 
             }
 
+            //////controllo finale///////
             if (circuito == "")
             {
-                MessageBox.Show("I dati della carta non sono validi");
+                MessageBox.Show("I dati della carta non sono validi", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            for (int i = 0; i < astolfo.Carte.Count; i++)
+            for (int i = 0; i < astolfo.Carte.Count; i++)   //controllo se la carta è già registrata
             {
                 if (astolfo.Carte[i].Numero == carta)
                 {
-                    MessageBox.Show("La carta non può essere doppia");
+                    MessageBox.Show("La carta non può essere doppia", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
 
-            astolfo.Carte.Add(new Carta { Nome = nome, Cognome = cognome, Circuito = circuito, Numero = carta, CVC = cvc, Anno = anno, Mese = mese});
+            //serializzazione
+            astolfo.Carte.Add(new Carta { Nome = nome, Cognome = cognome, Circuito = circuito, Numero = carta, CVC = cvc, Anno = anno, Mese = mese, Saldo = 10000});
             for (int i = 0; i < gigio.Utenti.Count; i++)
             {
                 if (gigio.Utenti[i].Username == astolfo.Username)
@@ -191,7 +185,7 @@ namespace Cashback2._0
             Aggiuntacarte();
         }
 
-        internal void Aggiuntacarte()
+        internal void Aggiuntacarte()   //aggiunge le carte sul datagrid 
         {
             dataGridView1.Rows.Clear();
             for (int i = 0; i < astolfo.Carte.Count; i++)
@@ -201,11 +195,16 @@ namespace Cashback2._0
             }
         }
 
-        internal void Pagamenti(string esercente, int prezzo)
+        internal void Pagamenti(string esercente, int prezzo)   //permette i pagamenti richiesti dall'utente
         {
+            if (comboBox1.Text == "")   //controlla se l'utente ha scelto la carta per i pagamenti
+            {
+                MessageBox.Show("Non hai selezionato nessuna carta", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             Transazioni popi = new Transazioni();
-            for (int i = 0; i < astolfo.Carte.Count; i++)
+            for (int i = 0; i < astolfo.Carte.Count; i++)   //inserisce nei dati dell'utente la carta e i conseguenti pagamenti ed esercenti
             {
                 if (astolfo.Carte[i].Numero == comboBox1.Text)
                 {
@@ -213,12 +212,31 @@ namespace Cashback2._0
                     popi.NumCarta = astolfo.Carte[i].Numero;
                     popi.Esercente = esercente;
                     popi.PrezzoTot = prezzo;
-                    popi.Giorno = DateTime.Today.ToString();
+                    popi.Giorno = DateTime.Today.ToShortDateString();
+                    astolfo.Carte[i].Saldo -= prezzo;
+                    label25.Text = "Saldo: " + astolfo.Carte[i].Saldo;
                     break;
                 }
             }
+            //serializzazione
             astolfo.Transazione.Add(popi);
-            MessageBox.Show("Pagamento andato a buon fine");
+            MessageBox.Show("Pagamento andato a buon fine");          
+        }
+
+        internal void Salva()   //serializzazione
+        {
+            gigio.Utenti[indicepazzo] = astolfo;
+            File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
+        }
+
+        internal void CaricaTransazioni()       //inserisce nella tabella dei pagamenti cosa si è effettuato
+        {
+            dataGridView2.Rows.Clear();
+            for (int i = 0; i < astolfo.Transazione.Count; i++)
+            {
+                dataGridView2.Rows.Add(astolfo.Transazione[i].NumCarta, astolfo.Transazione[i].PrezzoTot,
+                    astolfo.Transazione[i].Esercente, astolfo.Transazione[i].Giorno);
+            }
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -244,6 +262,7 @@ namespace Cashback2._0
         private void button7_Click(object sender, EventArgs e)
         {
             Spese.BringToFront();
+            //aggiorna le carte
             comboBox1.Items.Clear();
             for (int i = 0; i < astolfo.Carte.Count; i++)
             {
@@ -253,7 +272,7 @@ namespace Cashback2._0
 
         private void button10_Click(object sender, EventArgs e)
         {
-            
+            Pagamenti(((Button)sender).Text, 50);
         }
 
         private void TabellaCarte_Paint(object sender, PaintEventArgs e)
@@ -283,6 +302,7 @@ namespace Cashback2._0
 
         private void button20_Click(object sender, EventArgs e)
         {
+            Salva();
             Login.BringToFront();
         }
 
@@ -298,15 +318,15 @@ namespace Cashback2._0
         }
 
         private void button22_Click(object sender, EventArgs e)
-        {
-            //prezzo = insieme dei bottoni premuti
+        {           
+            CaricaTransazioni();
             Tracciato.BringToFront();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            //spesa = 35 euro
-            Pagamenti(((Button)sender).Text, 35);
+            //spesa = 40 euro
+            Pagamenti(((Button)sender).Text, 40);
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -324,13 +344,13 @@ namespace Cashback2._0
         private void button13_Click(object sender, EventArgs e)
         {
             //affitto = 200
-            //bollette mensili = 350
+            //bollette mensili = 400
             Pagamenti(((Button)sender).Text, 600);
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
-            //Revisione auto/moto = 55
+            //Revisione auto/moto = 60
             Pagamenti(((Button)sender).Text, 60);
         }
 
@@ -357,13 +377,40 @@ namespace Cashback2._0
                 button1.PerformClick();
             }
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)  //tabella pagamenti
+        {
+            CaricaTransazioni();
+            Tracciato.BringToFront();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string giorno;
+            giorno = DateTime.Today.ToShortDateString();
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-    public class Deserializzazione
+    public class Deserializzazione  //deserializzazione della persona
     {
         public List<Persona> Utenti { get; set; }
     }
 
-    public class Transazioni
+    public class Transazioni    //Dati pagamento
     {
         public string CircuitoTr { get; set; }
         public string NumCarta { get; set; }
@@ -378,9 +425,10 @@ namespace Cashback2._0
         public string Password { get; set; }
         public List<Carta> Carte { get; set; }
         public List<Transazioni> Transazione { get; set; }
+        public string Tempo { get; set; }
     }
 
-    public class Carta
+    public class Carta  //Dati carta
     {
         public string Nome { get; set; }
         public string Cognome { get; set; }
@@ -389,5 +437,6 @@ namespace Cashback2._0
         public string Mese { get; set; }
         public string Anno { get; set; }
         public string Circuito { get; set; }
+        public int Saldo { get; set; }
     }
 }

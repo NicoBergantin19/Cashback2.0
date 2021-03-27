@@ -1,5 +1,20 @@
 {
   "Utenti": [
-    
+    {
+      "Username": "ChadRaspa",
+      "Password": "ChadRaspa",
+      "Carte": [
+        {
+          "Nome": "Max",
+          "Cognome": "Raspa",
+          "Numero": "1234 5555 6666 8888",
+          "CVC": "123",
+          "Mese": "09",
+          "Anno": "28",
+          "Circuito": "ViXa"
+        }
+      ],
+      "Transazione": []
+    }
   ]
 }
