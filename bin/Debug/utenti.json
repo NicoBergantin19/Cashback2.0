@@ -1,20 +1,100 @@
 {
   "Utenti": [
     {
-      "Username": "ChadRaspa",
-      "Password": "ChadRaspa",
+      "Username": "DavideFrocio",
+      "Password": "DavideFrocio",
       "Carte": [
         {
-          "Nome": "Max",
-          "Cognome": "Raspa",
-          "Numero": "1234 5555 6666 8888",
-          "CVC": "123",
-          "Mese": "09",
-          "Anno": "28",
-          "Circuito": "ViXa"
+          "Nome": "Davide",
+          "Cognome": "Frociazzo",
+          "Numero": "1234 6666 9999 8888",
+          "CVC": "999",
+          "Mese": "12",
+          "Anno": "26",
+          "Circuito": "ViXa",
+          "Saldo": 9760
         }
       ],
-      "Transazione": []
+      "Transazione": [
+        {
+          "CircuitoTr": "ViXa",
+          "NumCarta": "1234 6666 9999 8888",
+          "Giorno": "28/03/2021",
+          "PrezzoTot": 20,
+          "Esercente": "BENZINA"
+        },
+        {
+          "CircuitoTr": "ViXa",
+          "NumCarta": "1234 6666 9999 8888",
+          "Giorno": "28/03/2021",
+          "PrezzoTot": 50,
+          "Esercente": "USCITA"
+        },
+        {
+          "CircuitoTr": "ViXa",
+          "NumCarta": "1234 6666 9999 8888",
+          "Giorno": "28/03/2021",
+          "PrezzoTot": 150,
+          "Esercente": "SPESE MEDICHE"
+        },
+        {
+          "CircuitoTr": "ViXa",
+          "NumCarta": "1234 6666 9999 8888",
+          "Giorno": "29/03/2021",
+          "PrezzoTot": 20,
+          "Esercente": "BENZINA"
+        }
+      ],
+      "Tempo": 7,
+      "UltimoGiorno": "29/03/2021"
+    },
+    {
+      "Username": "DavideFrocio",
+      "Password": "DavideFrocio",
+      "Carte": [
+        {
+          "Nome": "Davide",
+          "Cognome": "Frociazzo",
+          "Numero": "1234 6666 9999 8888",
+          "CVC": "999",
+          "Mese": "12",
+          "Anno": "26",
+          "Circuito": "ViXa",
+          "Saldo": 9760
+        }
+      ],
+      "Transazione": [
+        {
+          "CircuitoTr": "ViXa",
+          "NumCarta": "1234 6666 9999 8888",
+          "Giorno": "28/03/2021",
+          "PrezzoTot": 20,
+          "Esercente": "BENZINA"
+        },
+        {
+          "CircuitoTr": "ViXa",
+          "NumCarta": "1234 6666 9999 8888",
+          "Giorno": "28/03/2021",
+          "PrezzoTot": 50,
+          "Esercente": "USCITA"
+        },
+        {
+          "CircuitoTr": "ViXa",
+          "NumCarta": "1234 6666 9999 8888",
+          "Giorno": "28/03/2021",
+          "PrezzoTot": 150,
+          "Esercente": "SPESE MEDICHE"
+        },
+        {
+          "CircuitoTr": "ViXa",
+          "NumCarta": "1234 6666 9999 8888",
+          "Giorno": "29/03/2021",
+          "PrezzoTot": 20,
+          "Esercente": "BENZINA"
+        }
+      ],
+      "Tempo": 7,
+      "UltimoGiorno": "29/03/2021"
     }
   ]
 }

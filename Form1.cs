@@ -13,12 +13,7 @@ using System.IO;
 namespace Cashback2._0
 {
     public partial class Form1 : Form
-    {
-        /*I giorni iniziano a passare dal primo login, cioè quando viene creato l'account,
-         poi si può decidere quanti giorni skippare e ovviamente gli utenti sono indipendenti 
-         l'uno dall'altro. La possibilità avviene all'interno del pannello dello user così dopo 
-         se si vuole rimanere sullo stesso account ma con i giorni passati e poi al massimo se 
-         vuole cambiare utente torna indietro*/
+    {       
         public Form1()
         {
             InitializeComponent();
@@ -31,14 +26,22 @@ namespace Cashback2._0
         public Persona astolfo = new Persona();     //singola persona
         internal static string json;
         internal string[] array = {"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19",
-        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};    //array dei giorni da saltare
         private void Login_Paint(object sender, PaintEventArgs e)
         {
 
         }
         public int indicepazzo;
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)  //login
         {
+            for (int i = 0; i < gigio.Utenti.Count; i++)
+            {
+                if (gigio.Utenti.Count == 0)
+                {
+                    MessageBox.Show("Non ci sono utenti registrati", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
             for (int i = 0; i < gigio.Utenti.Count; i++)    //Ricerca dell'utente di cui fare il login
             {
                 if (gigio.Utenti[i].Username == textBox1.Text & gigio.Utenti[i].Password == textBox2.Text)
@@ -47,6 +50,7 @@ namespace Cashback2._0
                     astolfo = gigio.Utenti[i];
                     indicepazzo = i;
                     Aggiuntacarte();
+                    LeggiGiorno();
                     return;
                 }
             }
@@ -109,11 +113,22 @@ namespace Cashback2._0
             astolfo.Password = password;
             astolfo.Carte = new List<Carta>();
             astolfo.Transazione = new List<Transazioni>();
-            gigio.Utenti.Add(astolfo);           
-            Salva();
+            astolfo.UltimoGiorno = DateTime.Today.ToShortDateString();
+            gigio.Utenti.Add(astolfo);
+            File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
             Login.BringToFront();
         }
-
+        internal void LeggiSaldo()
+        {
+            for (int i = 0; i < astolfo.Carte.Count; i++)
+            {
+                if (astolfo.Carte[i].Numero == comboBox1.Text)
+                {
+                    label25.Text = "Saldo: " + astolfo.Carte[i].Saldo;
+                    return;
+                }
+            }
+        }
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             
@@ -212,7 +227,7 @@ namespace Cashback2._0
                     popi.NumCarta = astolfo.Carte[i].Numero;
                     popi.Esercente = esercente;
                     popi.PrezzoTot = prezzo;
-                    popi.Giorno = DateTime.Today.ToShortDateString();
+                    popi.Giorno = astolfo.UltimoGiorno;
                     astolfo.Carte[i].Saldo -= prezzo;
                     label25.Text = "Saldo: " + astolfo.Carte[i].Saldo;
                     break;
@@ -391,7 +406,7 @@ namespace Cashback2._0
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            LeggiSaldo();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -413,6 +428,27 @@ namespace Cashback2._0
                 return;
             }
             astolfo.Tempo += Convert.ToInt32(comboBox2.Text);
+            astolfo.UltimoGiorno = Convert.ToDateTime(astolfo.UltimoGiorno).AddDays(Convert.ToDouble(comboBox2.Text)).ToString().Substring(0,10);
+
+            LeggiGiorno();
+            if (astolfo.Tempo < 30 )
+            {
+                return;
+            }
+            astolfo.Tempo -= 30;
+        }
+        internal void LeggiGiorno()
+        {
+            label34.Text = "Giorno Corrente: " + astolfo.UltimoGiorno;
+        }
+        private void label34_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            Login.BringToFront();
         }
     }
     public class Deserializzazione  //deserializzazione della persona
@@ -436,6 +472,7 @@ namespace Cashback2._0
         public List<Carta> Carte { get; set; }
         public List<Transazioni> Transazione { get; set; }
         public int Tempo { get; set; }
+        public string UltimoGiorno { get; set; }
     }
 
     public class Carta  //Dati carta
