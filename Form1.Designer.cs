@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Tracciato = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.CartaUsata = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Spese = new System.Windows.Forms.Panel();
+            this.label35 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -72,6 +73,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.User = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
             this.button24 = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -115,7 +117,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label34 = new System.Windows.Forms.Label();
             this.Tracciato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.Registrazione.SuspendLayout();
@@ -316,6 +317,7 @@
             // 
             this.Spese.BackgroundImage = global::Cashback2._0.Properties.Resources.Acquisti;
             this.Spese.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Spese.Controls.Add(this.label35);
             this.Spese.Controls.Add(this.label33);
             this.Spese.Controls.Add(this.label32);
             this.Spese.Controls.Add(this.label31);
@@ -346,6 +348,18 @@
             this.Spese.Size = new System.Drawing.Size(968, 624);
             this.Spese.TabIndex = 4;
             this.Spese.Paint += new System.Windows.Forms.PaintEventHandler(this.Spese_Paint);
+            // 
+            // label35
+            // 
+            this.label35.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.White;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(786, 247);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(75, 20);
+            this.label35.TabIndex = 24;
+            this.label35.Text = "Restituiti:";
             // 
             // label33
             // 
@@ -660,6 +674,16 @@
             this.User.Size = new System.Drawing.Size(968, 624);
             this.User.TabIndex = 0;
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(12, 222);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(83, 13);
+            this.label34.TabIndex = 8;
+            this.label34.Text = "Giorno corrente:";
+            this.label34.Click += new System.EventHandler(this.label34_Click);
+            // 
             // button24
             // 
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -783,14 +807,14 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Carta,
@@ -1155,27 +1179,17 @@
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button1_KeyDown);
             // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(12, 222);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(83, 13);
-            this.label34.TabIndex = 8;
-            this.label34.Text = "Giorno corrente:";
-            this.label34.Click += new System.EventHandler(this.label34_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 624);
+            this.Controls.Add(this.Carte);
             this.Controls.Add(this.Spese);
-            this.Controls.Add(this.Registrazione);
             this.Controls.Add(this.User);
             this.Controls.Add(this.Tracciato);
+            this.Controls.Add(this.Registrazione);
             this.Controls.Add(this.Login);
-            this.Controls.Add(this.Carte);
             this.Controls.Add(this.VistaCarte);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -1292,6 +1306,7 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
     }
 }
 

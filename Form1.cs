@@ -6,14 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms; 
+using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
 
 namespace Cashback2._0
 {
     public partial class Form1 : Form
-    {       
+    {
         public Form1()
         {
             InitializeComponent();
@@ -34,18 +34,10 @@ namespace Cashback2._0
         public int indicepazzo;
         private void button1_Click(object sender, EventArgs e)  //login
         {
-            for (int i = 0; i < gigio.Utenti.Count; i++)
-            {
-                if (gigio.Utenti.Count == 0)
-                {
-                    MessageBox.Show("Non ci sono utenti registrati", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-
             for (int i = 0; i < gigio.Utenti.Count; i++)    //Ricerca dell'utente di cui fare il login
             {
                 if (gigio.Utenti[i].Username == textBox1.Text & gigio.Utenti[i].Password == textBox2.Text)
-                {                       
+                {
                     User.BringToFront();
                     astolfo = gigio.Utenti[i];
                     indicepazzo = i;
@@ -65,7 +57,7 @@ namespace Cashback2._0
         }
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -81,8 +73,8 @@ namespace Cashback2._0
         }
         private void button3_Click(object sender, EventArgs e)  //registrazione
         {
-            string username, password;            
-            
+            string username, password;
+
             if (string.IsNullOrWhiteSpace(textBox3.Text) && string.IsNullOrWhiteSpace(textBox4.Text))   //Controllo dei textbox
             {
                 MessageBox.Show("I campi non possono essere vuoti");
@@ -114,6 +106,9 @@ namespace Cashback2._0
             astolfo.Carte = new List<Carta>();
             astolfo.Transazione = new List<Transazioni>();
             astolfo.UltimoGiorno = DateTime.Today.ToShortDateString();
+            astolfo.TransazioniMensili = 0;
+            astolfo.Schei = 0;
+            astolfo.Restituzione = 0;
             gigio.Utenti.Add(astolfo);
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
             Login.BringToFront();
@@ -131,7 +126,7 @@ namespace Cashback2._0
         }
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button6_Click(object sender, EventArgs e)  //aggiunta carte
@@ -153,7 +148,7 @@ namespace Cashback2._0
             anno = textBox11.Text;
 
             //Controllo e assegnazione circuito in base ai primi 4 numeri
-            switch (textBox6.Text.Substring(0,4))
+            switch (textBox6.Text.Substring(0, 4))
             {
                 case "4023":
                     circuito = "MasterCard";
@@ -165,7 +160,7 @@ namespace Cashback2._0
 
                 case "9876":
                     circuito = "AmericanExpress";
-                    break;                 
+                    break;
             }
 
             //////controllo finale///////
@@ -185,7 +180,7 @@ namespace Cashback2._0
             }
 
             //serializzazione
-            astolfo.Carte.Add(new Carta { Nome = nome, Cognome = cognome, Circuito = circuito, Numero = carta, CVC = cvc, Anno = anno, Mese = mese, Saldo = 10000});
+            astolfo.Carte.Add(new Carta { Nome = nome, Cognome = cognome, Circuito = circuito, Numero = carta, CVC = cvc, Anno = anno, Mese = mese, Saldo = 10000 });
             for (int i = 0; i < gigio.Utenti.Count; i++)
             {
                 if (gigio.Utenti[i].Username == astolfo.Username)
@@ -235,9 +230,9 @@ namespace Cashback2._0
             }
             //serializzazione
             astolfo.Transazione.Add(popi);
-            MessageBox.Show("Pagamento andato a buon fine");          
+            Salva();
+            MessageBox.Show("Pagamento andato a buon fine");
         }
-
         internal void Salva()   //serializzazione
         {
             gigio.Utenti[indicepazzo] = astolfo;
@@ -254,6 +249,81 @@ namespace Cashback2._0
             }
         }
 
+        internal void CashbackGiornaliero()
+        {
+            for (int i = 0; i < astolfo.Transazione.Count; i++)
+            {
+
+            }
+        }
+
+        private void CashbackMensile()//giornaliero
+        {
+
+
+            astolfo.TransazioniMensili += astolfo.Transazione.Count;
+
+            Smistamento Divisione = new Smistamento();
+            for (int j = 0; j < 8; j++)// lista per suddividere i pagamenti per i vari esercenti
+            {
+                Divisione.Scelta.Add(new TransazioniDivise());
+            }
+
+            for (int j = 0; j < astolfo.Transazione.Count; j++)
+            {
+                switch (astolfo.Transazione[j].Esercente) //Spesa, Benza, Uscita, spese mediche, assicurazione, bollo, 
+                                                          //manutenzione casa, manutenzione veicolo
+                {
+                    case "SPESA (Alimentari)":
+                        Divisione.Scelta[0].Transazioni.Add(astolfo.Transazione[j]);
+                        break;
+                    case "BENZINA":
+                        Divisione.Scelta[1].Transazioni.Add(astolfo.Transazione[j]);
+                        break;
+                    case "USCITA":
+                        Divisione.Scelta[2].Transazioni.Add(astolfo.Transazione[j]);
+                        break;
+                    case "SPESE MEDICHE":
+                        Divisione.Scelta[3].Transazioni.Add(astolfo.Transazione[j]);
+                        break;
+                    case "ASSICURAZIONE":
+                        Divisione.Scelta[4].Transazioni.Add(astolfo.Transazione[j]);
+                        break;
+                    case "BOLLO VEICOLO":
+                        Divisione.Scelta[5].Transazioni.Add(astolfo.Transazione[j]);
+                        break;
+                    case "MANUTENZIONE CASA":
+                        Divisione.Scelta[6].Transazioni.Add(astolfo.Transazione[j]);
+                        break;
+                    case "MANUTENZIONE VEICOLO":
+                        Divisione.Scelta[7].Transazioni.Add(astolfo.Transazione[j]);
+                        break;
+
+                }
+            }
+            for (int j = 0; j < Divisione.Scelta.Count; j++)
+            {
+                float restituzione = 0, tmp = 0;
+                
+                if (Divisione.Scelta[j].Transazioni.Count!=0)
+                {
+                    tmp = Divisione.Scelta[j].Transazioni[0].PrezzoTot;
+                    tmp = tmp * 0.1f;
+                    if (tmp >= 15)
+                    {
+                        restituzione = 15;
+                    }
+                    else
+                    {
+                        tmp = float.Parse(Math.Round(tmp, 2).ToString());
+                        restituzione = tmp;
+                    }
+                    astolfo.Restituzione += restituzione;
+                }
+            }
+            astolfo.Transazione.Clear();
+            Salva();
+        }
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
 
@@ -283,6 +353,7 @@ namespace Cashback2._0
             {
                 comboBox1.Items.Add(astolfo.Carte[i].Numero);
             }
+            label35.Text = "Restituiti: " + astolfo.Schei;
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -302,7 +373,7 @@ namespace Cashback2._0
 
         private void button17_Click(object sender, EventArgs e)
         {
-            Login.BringToFront();
+            User.BringToFront();
         }
 
         private void button18_Click(object sender, EventArgs e)
@@ -333,7 +404,7 @@ namespace Cashback2._0
         }
 
         private void button22_Click(object sender, EventArgs e)
-        {           
+        {
             CaricaTransazioni();
             Tracciato.BringToFront();
         }
@@ -371,7 +442,7 @@ namespace Cashback2._0
 
         private void button23_Click(object sender, EventArgs e)
         {
-            Carte.BringToFront();                        
+            Carte.BringToFront();
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -420,7 +491,7 @@ namespace Cashback2._0
 
         }
 
-        private void button24_Click(object sender, EventArgs e)
+        private void button24_Click(object sender, EventArgs e) //skip
         {
             if (comboBox2.Text == "")
             {
@@ -428,14 +499,27 @@ namespace Cashback2._0
                 return;
             }
             astolfo.Tempo += Convert.ToInt32(comboBox2.Text);
-            astolfo.UltimoGiorno = Convert.ToDateTime(astolfo.UltimoGiorno).AddDays(Convert.ToDouble(comboBox2.Text)).ToString().Substring(0,10);
-
+            astolfo.UltimoGiorno = Convert.ToDateTime(astolfo.UltimoGiorno).AddDays(Convert.ToDouble(comboBox2.Text)).ToString().Substring(0, 10);
             LeggiGiorno();
-            if (astolfo.Tempo < 30 )
+            CashbackMensile();
+            if (astolfo.Tempo < 30)
             {
+                Salva();
                 return;
             }
             astolfo.Tempo -= 30;
+            if (astolfo.TransazioniMensili >= 5)
+            {
+                astolfo.Schei += astolfo.Restituzione;
+                astolfo.Restituzione = 0;
+            }
+            else
+            {
+                astolfo.Restituzione = 0;
+            }
+            astolfo.TransazioniMensili = 0;
+            
+            Salva();
         }
         internal void LeggiGiorno()
         {
@@ -466,13 +550,16 @@ namespace Cashback2._0
     }
 
     public class Persona
-    {       
+    {
         public string Username { get; set; }
         public string Password { get; set; }
         public List<Carta> Carte { get; set; }
         public List<Transazioni> Transazione { get; set; }
         public int Tempo { get; set; }
         public string UltimoGiorno { get; set; }
+        public float Restituzione { get; set; }
+        public float Schei { get; set; }
+        public int TransazioniMensili { get; set; }
     }
 
     public class Carta  //Dati carta
@@ -485,5 +572,13 @@ namespace Cashback2._0
         public string Anno { get; set; }
         public string Circuito { get; set; }
         public int Saldo { get; set; }
+    }
+    public class Smistamento
+    {
+        public List<TransazioniDivise> Scelta = new List<TransazioniDivise>();
+    }
+    public class TransazioniDivise
+    {
+        public List<Transazioni> Transazioni = new List<Transazioni>();
     }
 }

@@ -10,3 +10,15 @@ D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.csproj
 D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.csproj.CopyComplete
 D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.exe
 D:\Programmi\Programmi seri\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.pdb
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\bin\Debug\Cashback2.0.exe.config
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\bin\Debug\Cashback2.0.exe
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\bin\Debug\Cashback2.0.pdb
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.csprojAssemblyReference.cache
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\obj\Debug\Cashback2._0.Form1.resources
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\obj\Debug\Cashback2._0.Properties.Resources.resources
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.csproj.GenerateResource.cache
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.csproj.CopyComplete
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.exe
+C:\Users\Davide\Desktop\Cashback2.0\Cashback2.0\obj\Debug\Cashback2.0.pdb
