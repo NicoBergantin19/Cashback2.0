@@ -84,7 +84,7 @@ namespace Cashback2._0
             username = textBox3.Text;
             password = textBox4.Text;
 
-            if (textBox4.Text != textBox5.Text)
+            if (textBox4.Text != textBox5.Text) //controllo se le password inserite sono coincidenti
             {
                 MessageBox.Show("Le password non coincidono");
                 return;
@@ -113,7 +113,7 @@ namespace Cashback2._0
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
             Login.BringToFront();
         }
-        internal void LeggiSaldo()
+        internal void LeggiSaldo()  //aggiorna la label in cui c-[ scritto il saldo
         {
             for (int i = 0; i < astolfo.Carte.Count; i++)
             {
@@ -233,7 +233,7 @@ namespace Cashback2._0
             Salva();
             MessageBox.Show("Pagamento andato a buon fine");
         }
-        internal void Salva()   //serializzazione
+        internal void Salva()   //serializzazione, metodo scritto per facilità, altrimenti bisogna riscrivere ogni volta la serializzazione
         {
             gigio.Utenti[indicepazzo] = astolfo;
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
@@ -249,20 +249,9 @@ namespace Cashback2._0
             }
         }
 
-        internal void CashbackGiornaliero()
+        private void CashbackMensile()//giornaliero e poi influisce sul mensile
         {
-            for (int i = 0; i < astolfo.Transazione.Count; i++)
-            {
-
-            }
-        }
-
-        private void CashbackMensile()//giornaliero
-        {
-
-
             astolfo.TransazioniMensili += astolfo.Transazione.Count;
-
             Smistamento Divisione = new Smistamento();
             for (int j = 0; j < 8; j++)// lista per suddividere i pagamenti per i vari esercenti
             {
@@ -301,10 +290,9 @@ namespace Cashback2._0
 
                 }
             }
-            for (int j = 0; j < Divisione.Scelta.Count; j++)
+            for (int j = 0; j < Divisione.Scelta.Count; j++)    //calcolo cashback
             {
-                float restituzione = 0, tmp = 0;
-                
+                float restituzione = 0, tmp = 0;         
                 if (Divisione.Scelta[j].Transazioni.Count!=0)
                 {
                     tmp = Divisione.Scelta[j].Transazioni[0].PrezzoTot;
@@ -322,6 +310,7 @@ namespace Cashback2._0
                 }
             }
             astolfo.Transazione.Clear();
+            //serializzazione
             Salva();
         }
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -493,7 +482,7 @@ namespace Cashback2._0
 
         private void button24_Click(object sender, EventArgs e) //skip
         {
-            if (comboBox2.Text == "")
+            if (comboBox2.Text == "")   //controllo se sono stati inseriti i giornida saltare
             {
                 MessageBox.Show("Non hai inserito i giorni da saltare", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -518,7 +507,7 @@ namespace Cashback2._0
                 astolfo.Restituzione = 0;
             }
             astolfo.TransazioniMensili = 0;
-            
+            //serializzazione
             Salva();
         }
         internal void LeggiGiorno()

@@ -1184,12 +1184,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 624);
+            this.Controls.Add(this.Login);
             this.Controls.Add(this.Carte);
             this.Controls.Add(this.Spese);
             this.Controls.Add(this.User);
             this.Controls.Add(this.Tracciato);
             this.Controls.Add(this.Registrazione);
-            this.Controls.Add(this.Login);
             this.Controls.Add(this.VistaCarte);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

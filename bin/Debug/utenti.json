@@ -1,26 +1,5 @@
 {
   "Utenti": [
-    {
-      "Username": "sivierofrocio",
-      "Password": "1234",
-      "Carte": [
-        {
-          "Nome": "siviero",
-          "Cognome": "frocio",
-          "Numero": "4023 1234 1234 1234",
-          "CVC": "123",
-          "Mese": "02",
-          "Anno": "23",
-          "Circuito": "MasterCard",
-          "Saldo": 3240
-        }
-      ],
-      "Transazione": [],
-      "Tempo": 11,
-      "UltimoGiorno": "07/10/2021",
-      "Restituzione": 0.0,
-      "Schei": 199.0,
-      "TransazioniMensili": 0
-    }
+    
   ]
 }
