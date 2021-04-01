@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Tracciato = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.CartaUsata = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1185,13 +1186,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 624);
             this.Controls.Add(this.Login);
-            this.Controls.Add(this.Carte);
-            this.Controls.Add(this.Spese);
             this.Controls.Add(this.User);
             this.Controls.Add(this.Tracciato);
+            this.Controls.Add(this.Spese);
+            this.Controls.Add(this.Carte);
             this.Controls.Add(this.Registrazione);
             this.Controls.Add(this.VistaCarte);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";

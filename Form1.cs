@@ -77,7 +77,7 @@ namespace Cashback2._0
 
             if (string.IsNullOrWhiteSpace(textBox3.Text) && string.IsNullOrWhiteSpace(textBox4.Text))   //Controllo dei textbox
             {
-                MessageBox.Show("I campi non possono essere vuoti");
+                MessageBox.Show("I campi non possono essere vuoti", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -86,7 +86,7 @@ namespace Cashback2._0
 
             if (textBox4.Text != textBox5.Text) //controllo se le password inserite sono coincidenti
             {
-                MessageBox.Show("Le password non coincidono");
+                MessageBox.Show("Le password non coincidono", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -113,7 +113,7 @@ namespace Cashback2._0
             File.WriteAllText("utenti.json", JsonConvert.SerializeObject(gigio, Formatting.Indented));
             Login.BringToFront();
         }
-        internal void LeggiSaldo()  //aggiorna la label in cui c-[ scritto il saldo
+        internal void LeggiSaldo()  //aggiorna la label in cui è scritto il saldo
         {
             for (int i = 0; i < astolfo.Carte.Count; i++)
             {
@@ -133,6 +133,7 @@ namespace Cashback2._0
         {
             string carta, nome, cognome, cvc, mese, anno, circuito = "";
 
+            //controllo se i campi della registrazione sono vuoti o nulli
             if (string.IsNullOrWhiteSpace(textBox6.Text) && string.IsNullOrWhiteSpace(textBox7.Text) && string.IsNullOrWhiteSpace(textBox8.Text)
                 && string.IsNullOrWhiteSpace(textBox9.Text) && string.IsNullOrWhiteSpace(textBox10.Text) && string.IsNullOrWhiteSpace(textBox11.Text))
             {
@@ -163,7 +164,7 @@ namespace Cashback2._0
                     break;
             }
 
-            //////controllo finale///////
+            //////controlli finale///////
             if (circuito == "")
             {
                 MessageBox.Show("I dati della carta non sono validi", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -261,7 +262,7 @@ namespace Cashback2._0
             for (int j = 0; j < astolfo.Transazione.Count; j++)
             {
                 switch (astolfo.Transazione[j].Esercente) //Spesa, Benza, Uscita, spese mediche, assicurazione, bollo, 
-                                                          //manutenzione casa, manutenzione veicolo
+                                                          //manutenzione casa, manutenzione veicolo, divide le transazioni per esercente
                 {
                     case "SPESA (Alimentari)":
                         Divisione.Scelta[0].Transazioni.Add(astolfo.Transazione[j]);
@@ -296,8 +297,8 @@ namespace Cashback2._0
                 if (Divisione.Scelta[j].Transazioni.Count!=0)
                 {
                     tmp = Divisione.Scelta[j].Transazioni[0].PrezzoTot;
-                    tmp = tmp * 0.1f;
-                    if (tmp >= 15)
+                    tmp = tmp * 0.1f;   //calcolo 10%
+                    if (tmp >= 15)  //se il calcolo è maggiore di 15, il massimo restituito è 15 euro
                     {
                         restituzione = 15;
                     }
@@ -333,7 +334,7 @@ namespace Cashback2._0
             VistaCarte.BringToFront();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)  //aggiornamento carte
         {
             Spese.BringToFront();
             //aggiorna le carte
@@ -482,7 +483,7 @@ namespace Cashback2._0
 
         private void button24_Click(object sender, EventArgs e) //skip
         {
-            if (comboBox2.Text == "")   //controllo se sono stati inseriti i giornida saltare
+            if (comboBox2.Text == "")   //controllo se sono stati inseriti i giorni da saltare
             {
                 MessageBox.Show("Non hai inserito i giorni da saltare", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -538,7 +539,7 @@ namespace Cashback2._0
         public string Esercente { get; set; }
     }
 
-    public class Persona
+    public class Persona    //dati persona
     {
         public string Username { get; set; }
         public string Password { get; set; }
@@ -562,11 +563,11 @@ namespace Cashback2._0
         public string Circuito { get; set; }
         public int Saldo { get; set; }
     }
-    public class Smistamento
+    public class Smistamento    //smistamento esercenti 
     {
         public List<TransazioniDivise> Scelta = new List<TransazioniDivise>();
     }
-    public class TransazioniDivise
+    public class TransazioniDivise  //Transazioni divise per poi dividere anche gli esercenti
     {
         public List<Transazioni> Transazioni = new List<Transazioni>();
     }
